@@ -39,7 +39,7 @@ void createNode(int n)
        fgets(newnode->bname, sizeof(newnode->bname), stdin); 
        newnode->bname[strcspn(newnode->bname, "\n")] = '\0'; // Remove newline character 
 
-       printf("Enter the book auhor: "); 
+       printf("Enter the book author: "); 
        fgets(newnode->author, sizeof(newnode->author), stdin); 
        newnode->author[strcspn(newnode->author, "\n")] = '\0'; // Remove newline character 
 
@@ -141,29 +141,7 @@ void delete(int pos)
    free(temp);
 }
 
-void delete1(int val)
-{
-   if (head->id == val)
-   {
-       head = head->next;
-       n--;
-   }
-   else
-   {
-       for (temp = head; temp->next != NULL; temp = temp->next)
-       {
-           if (temp->next->id == val)
-           {
-               t = temp->next;
-               temp->next = t->next;
-               // free(t);
-               n--;
-               return;
-           }
-       }
-   }
-   printf("%d element not found :(\n", val);
-}
+
 
 void search(int val)
 {
@@ -172,11 +150,11 @@ void search(int val)
    {
        if (temp->id == val)
        {
-           printf("%d element is found at %d position\n", temp->id, i);
+           printf("%d book is found at %d position\n", temp->id, i);
            return;
        }
    }
-   printf("%d element not found :(\n", val);
+   printf("%d book not found :(\n", val);
 }
 
 
@@ -192,9 +170,9 @@ void main()
        printf("3: Insert by position\n");
 
        printf("4: delete by position\n");
-       printf("5: delete by value\n");
-       printf("6: search\n");
-       printf("7: Exit\n");
+      
+       printf("5: search\n");
+       printf("6: Exit\n");
        printf("\nEnter the operation\n");
        scanf("%d", &c);
 
@@ -206,10 +184,10 @@ void main()
                printf("Singly Linked List already Exists :|\n");
            else
            {
-               printf("enter the number of nodes:-\n");
+               printf("enter the number of books:-\n");
                scanf("%d", &n);
                if (n <= 0)
-                   printf("you cannot enter 0 element\n");
+                   printf("you cannot enter 0 books\n");
                else
                    createNode(n);
            }
@@ -246,16 +224,6 @@ void main()
            break;
        case 5:
            if (head == NULL)
-               printf("Singly Linked List is Empty :(\n");
-           else
-           {
-               printf("enter value\n");
-               scanf("%d", &val);
-               delete1(val);
-           }
-           break;
-       case 6:
-           if (head == NULL)
                printf("Singly linked list is empty :(\n");
            else
            {
@@ -265,7 +233,7 @@ void main()
            }
            break;
 
-       case 7:
+       case 6:
            exit(0);
 
        default:
@@ -275,6 +243,129 @@ void main()
            printf("Singly Linked List is Empty :(\n");
        else
            display();
-       printf("no. of nodes = %d\n", n);
+       printf("no. of books = %d\n", n);
    }
 }
+
+
+// Output :
+
+// PS D:\maheshMore\Data Structure> cd "d:\maheshMore\Data Structure\" ; if ($?) { gcc singly.c -o singly } ; if ($?) { .\singly }
+
+// Operations on Singly Linked List : 
+// 1: Create Singly Linked List
+// 2: Display Singly Linked List
+// 3: Insert by position
+// 4: delete by position
+// 5: search
+// 6: Exit
+
+// Enter the operation
+// 1
+// enter the number of books:-
+// 2
+// Enter the book ID: 23
+// Enter the book name: darkShahu
+// Enter the book auhor: saurabh
+// Enter the book ID: 78
+// Enter the book name: whiteShahu
+// Enter the book auhor: mahesh
+
+// Head->[ 23 : darkShahu : saurabh ]->[ 78 : whiteShahu : mahesh ]->Null
+// no. of books = 2
+
+// Operations on Singly Linked List : 
+// 1: Create Singly Linked List
+// 2: Display Singly Linked List
+// 3: Insert by position
+// 4: delete by position
+// 5: search
+// 6: Exit
+
+// Enter the operation
+// 2
+
+// Head->[ 23 : darkShahu : saurabh ]->[ 78 : whiteShahu : mahesh ]->Null
+
+// Head->[ 23 : darkShahu : saurabh ]->[ 78 : whiteShahu : mahesh ]->Null
+// no. of books = 2
+
+// Operations on Singly Linked List :
+// 1: Create Singly Linked List
+// 2: Display Singly Linked List
+// 3: Insert by position
+// 4: delete by position
+// 5: search
+// 6: Exit
+
+// Enter the operation
+// 3
+// enter position
+// 2
+// Enter the book ID: 45
+// Enter the book name: darkSaurabh
+// Enter the book author: yash
+
+// Head->[ 23 : darkShahu : saurabh ]->[ 45 : darkSaurabh : yash ]->[ 78 : whiteShahu : mahesh ]->Null
+// no. of books = 3
+
+// Operations on Singly Linked List :
+// 1: Create Singly Linked List
+// 2: Display Singly Linked List
+// 3: Insert by position
+// 4: delete by position
+// 5: search
+// 6: Exit
+
+// Enter the operation
+// 4
+// enter position
+// 2
+
+// Head->[ 23 : darkShahu : saurabh ]->[ 78 : whiteShahu : mahesh ]->Null
+// no. of books = 2
+
+// Operations on Singly Linked List :
+// 1: Create Singly Linked List
+// 2: Display Singly Linked List
+// 3: Insert by position
+// 4: delete by position
+// 5: search
+// 6: Exit
+
+// Enter the operation
+// 5
+// enter value
+// 23
+// 23 book is found at 1 position
+
+// Head->[ 23 : darkShahu : saurabh ]->[ 78 : whiteShahu : mahesh ]->Null
+// no. of books = 2
+
+// Operations on Singly Linked List :
+// 1: Create Singly Linked List
+// 2: Display Singly Linked List
+// 3: Insert by position
+// 4: delete by position
+// 5: search
+// 6: Exit
+
+// Enter the operation
+// 5
+// enter value
+// 46546
+// 46546 book not found :(
+
+// Head->[ 23 : darkShahu : saurabh ]->[ 78 : whiteShahu : mahesh ]->Null
+// no. of books = 2
+
+// Operations on Singly Linked List :
+// 1: Create Singly Linked List
+// 2: Display Singly Linked List
+// 3: Insert by position
+// 4: delete by position
+// 5: search
+// 6: Exit
+
+// Enter the operation
+// 6
